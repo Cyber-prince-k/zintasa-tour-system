@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings | Zintasa Tour</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <!-- Same header as index.html -->
+    </header>
+
+    <main>
+        <section class="hero bookings-hero">
+            <div class="container">
+                <h1>My Bookings</h1>
+                <p>View and manage your upcoming trips</p>
+            </div>
+        </section>
+
+        <section class="bookings-list">
+            <div class="container">
+                <div class="booking-tabs">
+                    <button class="tab-btn active" data-tab="upcoming">Upcoming</button>
+                    <button class="tab-btn" data-tab="past">Past</button>
+                    <button class="tab-btn" data-tab="cancelled">Cancelled</button>
+                </div>
+
+                <div class="bookings-container">
+                    <div class="no-bookings">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>No bookings yet</h3>
+                        <p>Start exploring Malawi to make your first booking</p>
+                        <a href="explore.html" class="btn btn-primary">Explore Destinations</a>
+                    </div>
+
+                    <div class="bookings-grid" id="bookings-grid">
+                        <!-- Bookings will be loaded here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Same footer as index.html -->
+    </footer>
+
+    <script src="js/bookings.js"></script>
+</body>
+</html>

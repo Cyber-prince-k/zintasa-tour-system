@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account | Zintasa Tour</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <!-- Same header as index.html -->
+    </header>
+
+    <main>
+        <section class="hero account-hero">
+            <div class="container">
+                <h1>My Account</h1>
+                <p>Manage your profile and settings</p>
+            </div>
+        </section>
+
+        <section class="account-content">
+            <div class="container">
+                <div class="account-sidebar">
+                    <div class="account-profile">
+                        <div class="profile-image">
+                            <img src="images/default-avatar.jpg" alt="Profile" id="profile-img">
+                            <button class="btn btn-outline change-photo">Change Photo</button>
+                        </div>
+                        <h3 id="user-name">Loading...</h3>
+                        <p id="user-role">Tourist</p>
+                    </div>
+                    <nav class="account-menu">
+                        <ul>
+                            <li class="active"><a href="#" data-tab="profile"><i class="fas fa-user"></i> Profile</a></li>
+                            <li><a href="#" data-tab="security"><i class="fas fa-lock"></i> Security</a></li>
+                            <li><a href="#" data-tab="preferences"><i class="fas fa-cog"></i> Preferences</a></li>
+                            <li><a href="#" data-tab="notifications"><i class="fas fa-bell"></i> Notifications</a></li>
+                            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="account-details">
+                    <div class="account-tab active" id="profile-tab">
+                        <h2>Profile Information</h2>
+                        <form id="profile-form">
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                    <div class="account-tab" id="security-tab">
+                        <h2>Security Settings</h2>
+                        <form id="security-form">
+                            <div class="form-group">
+                                <label for="current-password">Current Password</label>
+                                <input type="password" id="current-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm New Password</label>
+                                <input type="password" id="confirm-password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+                        </form>
+                    </div>
+                    <!-- Other tabs would go here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Same footer as index.html -->
+    </footer>
+
+    <script src="js/account.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zintasa Tour - Explore Malawi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Zintasa Tour</h1>
+                <p>Discover the Warm Heart of Africa</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="explore.html">Explore</a></li>
+                    <li><a href="bookings.html">My Bookings</a></li>
+                    <li><a href="chat.html">Chat</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+            <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Experience Malawi Like Never Before</h2>
+                    <p>Find the best accommodations, transportation, and attractions with Zintasa Tour</p>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search for hotels, attractions, or taxi services...">
+                        <button class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="map-section" class="map-container">
+            <div id="map"></div>
+            <div class="map-controls">
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all"><i class="fas fa-layer-group"></i> All</button>
+                    <button class="filter-btn" data-filter="hotels"><i class="fas fa-hotel"></i> Hotels</button>
+                    <button class="filter-btn" data-filter="lodges"><i class="fas fa-campground"></i> Lodges</button>
+                    <button class="filter-btn" data-filter="attractions"><i class="fas fa-mountain"></i> Attractions</button>
+                    <button class="filter-btn" data-filter="taxis"><i class="fas fa-taxi"></i> Taxis</button>
+                </div>
+                <div class="location-info" id="location-info">
+                    <div class="close-btn"><i class="fas fa-times"></i></div>
+                    <h3 id="info-title">Location Details</h3>
+                    <div id="info-content"></div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="book-now-btn">Book Now</button>
+                        <button class="btn btn-outline" id="chat-btn">Chat with Provider</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="explore" class="categories">
+            <div class="container">
+                <h2>Explore Malawi</h2>
+                <div class="category-grid">
+                    <div class="category-card" data-filter="hotels">
+                        <i class="fas fa-hotel"></i>
+                        <h3>Hotels</h3>
+                        <p>Find the best hotels across Malawi</p>
+                    </div>
+                    <div class="category-card" data-filter="lodges">
+                        <i class="fas fa-campground"></i>
+                        <h3>Lodges</h3>
+                        <p>Experience nature with comfort</p>
+                    </div>
+                    <div class="category-card" data-filter="attractions">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Attractions</h3>
+                        <p>Discover Malawi's beautiful sites</p>
+                    </div>
+                    <div class="category-card" data-filter="taxis">
+                        <i class="fas fa-taxi"></i>
+                        <h3>Taxi Services</h3>
+                        <p>Reliable transportation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured">
+            <div class="container">
+                <h2>Featured Destinations</h2>
+                <div class="featured-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <div class="close-modal"><i class="fas fa-times"></i></div>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Register</button>
+            </div>
+            <div class="auth-forms">
+                <form id="login-form" class="auth-form active">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <form id="register-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+                        <input type="text" id="register-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-role">I am a:</label>
+                        <select id="register-role">
+                            <option value="tourist">Tourist</option>
+                            <option value="taxi">Taxi Driver</option>
+                            <option value="hotel">Hotel/Lodge Owner</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <div class="close-modal"><i class="fas fa-times"></i></div>
+            <h2>Book Service</h2>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="booking-service">Service</label>
+                    <input type="text" id="booking-service" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="booking-name">Your Name</label>
+                    <input type="text" id="booking-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="booking-email">Email</label>
+                    <input type="email" id="booking-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="booking-phone">Phone</label>
+                    <input type="tel" id="booking-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="booking-date">Date</label>
+                    <input type="date" id="booking-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="booking-notes">Special Requests</label>
+                    <textarea id="booking-notes"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="chat-modal">
+        <div class="modal-content">
+            <div class="close-modal"><i class="fas fa-times"></i></div>
+            <h2 id="chat-title">Chat with Service Provider</h2>
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Messages will appear here -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-message" placeholder="Type your message...">
+                    <button id="send-message" class="btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <div class="chat-actions">
+                    <button id="share-location" class="btn btn-outline"><i class="fas fa-map-marker-alt"></i> Share Location</button>
+                    <button id="negotiate-price" class="btn btn-outline"><i class="fas fa-money-bill-wave"></i> Negotiate Price</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zintasa Tour</h3>
+                    <p>Making your Malawi experience seamless and memorable.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#explore">Explore</a></li>
+                        <li><a href="#bookings">My Bookings</a></li>
+                        <li><a href="#chat">Chat</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>info@zintasatour.com<br>+265 123 456 789</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Zintasa Tour. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
